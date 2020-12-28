@@ -72,6 +72,7 @@ class MyStack : Stack
             {
                 Caching = "ReadWrite",
                 StorageAccountType = "Standard_LRS",
+                DiskSizeGb = 60,
             },
             SourceImageReference = new LinuxVirtualMachineSourceImageReferenceArgs
             {
