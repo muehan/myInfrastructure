@@ -50,6 +50,11 @@ class MyStack : Stack
         var cfg = new Config();
         var secretPassword = cfg.RequireSecret("adminpassword");
 
+        var linuxVirtualMachineScaleSet = new LinuxVirtualMachineScaleSet(
+            "linuxVirtualMachineScaleSet",
+            new LinuxVirtualMachineScaleSetArgs
+            { });
+
         var server = new LinuxVirtualMachine(
             "debianVpnUsa",
             new LinuxVirtualMachineArgs
@@ -58,6 +63,8 @@ class MyStack : Stack
                 Location = resourceGroup.Location,
                 Size = "Standard_B2s",
                 AdminUsername = "mueha0",
+                PlatformFaultDomain = 3,
+                VirtualMachineScaleSetId = linuxVirtualMachineScaleSet.Id,
                 NetworkInterfaceIds =
                 {
                     networkInterface.Id,
@@ -98,6 +105,11 @@ class MyStack : Stack
         var cfg = new Config();
         var secretPassword = cfg.RequireSecret("adminpassword");
 
+        var linuxVirtualMachineScaleSet = new LinuxVirtualMachineScaleSet(
+            "linuxVirtualMachineScaleSet",
+            new LinuxVirtualMachineScaleSetArgs
+            { });
+
         var gameServer1 = new LinuxVirtualMachine(
             "linuxGameServer1",
             new LinuxVirtualMachineArgs
@@ -107,6 +119,7 @@ class MyStack : Stack
                 Size = "Standard_B2s",
                 AdminUsername = "mueha0",
                 PlatformFaultDomain = 3,
+                VirtualMachineScaleSetId = linuxVirtualMachineScaleSet.Id,
                 NetworkInterfaceIds =
                 {
                     gameServerNetworkInterface.Id,
