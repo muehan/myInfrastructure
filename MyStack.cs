@@ -106,6 +106,7 @@ class MyStack : Stack
                 Location = resourceGroup.Location,
                 Size = "Standard_B2s",
                 AdminUsername = "mueha0",
+                PlatformFaultDomain = 3,
                 NetworkInterfaceIds =
                 {
                     gameServerNetworkInterface.Id,
