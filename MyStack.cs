@@ -10,26 +10,49 @@ class MyStack : Stack
     public MyStack()
     {
         // Create an Azure Resource Group
-        var resourceGroup = new ResourceGroup(
-            "myinfrastructure");
+        var resourceGroupSwitzerland = new ResourceGroup(
+            "pulumi-switzerland",
+            new ResourceGroupArgs
+            {
+                Location = "SwitzerlandNorth"
+            });
 
-        var virtualNetwork = CreateVirtualNetwork(
-            resourceGroup,
-            "myInfrastructureNetwork",
-            "10.0.0.0/16");
+        var virtualNetworkswitzerland = CreateVirtualNetwork(
+           resourceGroupSwitzerland,
+           "pulumiNetworkSwitzerland",
+           "10.0.0.0/16");
 
-        var subNet = CreateSubnet(
-            resourceGroup,
-            virtualNetwork,
+        var subNetSwitzerland = CreateSubnet(
+            "pulumiSubnetSwitzerland",
+            resourceGroupSwitzerland,
+            virtualNetworkswitzerland,
             "10.0.2.0/24");
 
         CreateGameServer(
-            resourceGroup,
-            subNet);
+            resourceGroupSwitzerland,
+            subNetSwitzerland);
+
+        var resourceGroupUsaWest = new ResourceGroup(
+            "pulumi-westus",
+            new ResourceGroupArgs
+            {
+                Location = "westus"
+            });
+
+        var virtualNetworkUsa = CreateVirtualNetwork(
+           resourceGroupUsaWest,
+           "pulumiNetworkWestus",
+           "10.0.0.0/16");
+
+        var subNetUsa = CreateSubnet(
+            "pulumiSubnetWestus",
+            resourceGroupUsaWest,
+            virtualNetworkUsa,
+            "10.0.2.0/24");
 
         CreateDebianVpn(
-            resourceGroup,
-            subNet);
+            resourceGroupUsaWest,
+            subNetUsa);
     }
 
     private void CreateDebianVpn(
@@ -50,11 +73,6 @@ class MyStack : Stack
         var cfg = new Config();
         var secretPassword = cfg.RequireSecret("adminpassword");
 
-        var linuxVirtualMachineScaleSet = new LinuxVirtualMachineScaleSet(
-            "linuxVirtualMachineScaleSet",
-            new LinuxVirtualMachineScaleSetArgs
-            { });
-
         var server = new LinuxVirtualMachine(
             "debianVpnUsa",
             new LinuxVirtualMachineArgs
@@ -63,8 +81,7 @@ class MyStack : Stack
                 Location = resourceGroup.Location,
                 Size = "Standard_B2s",
                 AdminUsername = "mueha0",
-                PlatformFaultDomain = 3,
-                VirtualMachineScaleSetId = linuxVirtualMachineScaleSet.Id,
+                //PlatformFaultDomain = 3,
                 NetworkInterfaceIds =
                 {
                     networkInterface.Id,
@@ -105,11 +122,6 @@ class MyStack : Stack
         var cfg = new Config();
         var secretPassword = cfg.RequireSecret("adminpassword");
 
-        var linuxVirtualMachineScaleSet = new LinuxVirtualMachineScaleSet(
-            "linuxVirtualMachineScaleSet",
-            new LinuxVirtualMachineScaleSetArgs
-            { });
-
         var gameServer1 = new LinuxVirtualMachine(
             "linuxGameServer1",
             new LinuxVirtualMachineArgs
@@ -118,8 +130,7 @@ class MyStack : Stack
                 Location = resourceGroup.Location,
                 Size = "Standard_B2s",
                 AdminUsername = "mueha0",
-                PlatformFaultDomain = 3,
-                VirtualMachineScaleSetId = linuxVirtualMachineScaleSet.Id,
+                //PlatformFaultDomain = 3,
                 NetworkInterfaceIds =
                 {
                     gameServerNetworkInterface.Id,
@@ -168,12 +179,13 @@ class MyStack : Stack
     }
 
     private Subnet CreateSubnet(
+        string name,
         ResourceGroup resourceGroup,
         VirtualNetwork virtualNetwork,
         string addressPrefixes)
     {
         return new Subnet(
-            "vmSubnet",
+            name,
             new SubnetArgs
             {
                 ResourceGroupName = resourceGroup.Name,
@@ -208,7 +220,8 @@ class MyStack : Stack
             new PublicIpArgs
             {
                 ResourceGroupName = resourceGroup.Name,
-                AllocationMethod = method
+                AllocationMethod = method,
+                Location = resourceGroup.Location,
             });
     }
 }

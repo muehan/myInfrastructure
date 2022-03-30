@@ -1,4 +1,3 @@
 config:
-  azure:location: SwitzerlandNorth
   myinfrastructure:adminpassword:
-    secure: AAABAIBlafwS7N0dDHOnaC07bQJ2YZF4sKRg3PS7c9Gd9blWUWFc/HSBaCGD3v8PNxKF/ab8FL4XmUnYNI9L6Tbza1qOmWUol1X/UA==
+    secure: AAABAHGQjrF/L4LAhFN7CXaFx+P0234iONwQRcddEeWAKN9kyPWgXO+AxVA=
