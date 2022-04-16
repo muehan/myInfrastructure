@@ -11,9 +11,8 @@ sudo apt install openvpn
 
 sudo -u mueha0 wget -P ~/ https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.8/EasyRSA-3.0.8.tgz
 
-sudo -u mueha0 cd ~
-sudo -u mueha0 tar xvf EasyRSA-3.0.8.tgz
-sudo -u mueha0 rm EasyRSA-3.0.8.tgz
+sudo -u mueha0 tar xvf ~/EasyRSA-3.0.8.tgz
+sudo -u mueha0 rm ~/EasyRSA-3.0.8.tgz
 
 sudo -u mueha0 cd ~/EasyRSA-v3.0.8/
 sudo -u mueha0 cp vars.example vars
