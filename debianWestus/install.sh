@@ -9,7 +9,7 @@ echo "|_____|___|___|_| |_____|_____|   \___/|__|  |_|___|  |_____|___|_|  \_/|_
 apt update
 apt install openvpn
 
-sudo su mueha0 wget -P ~/ https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.8/EasyRSA-3.0.8.tgz
+sudo -u mueha0 wget -P ~/ https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.8/EasyRSA-3.0.8.tgz
 
 tar xvf ~/EasyRSA-3.0.8.tgz
 rm ~/EasyRSA-3.0.8.tgz
