@@ -25,3 +25,4 @@ sed -i 's/#set_var EASYRSA_REQ_EMAIL\t"me@example.net"/set_var EASYRSA_REQ_EMAIL
 sed -i 's/#set_var EASYRSA_REQ_OU\t\t"My Organizational Unit"/set_var EASYRSA_REQ_OU\t\t"Muehan Org Unit"/' vars
 
 ./easyrsa init-pki
+./easyrsa build-ca nopass
