@@ -13,6 +13,7 @@ wget -P ~/ https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.6/EasyRSA-
 
 cd ~
 tar xvf EasyRSA-unix-v3.0.7.tgz
+rm EasyRSA-unix-v3.0.7.tgz
 
 cd ~/EasyRSA-v3.0.7/
 cp vars.example vars
