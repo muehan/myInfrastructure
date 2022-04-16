@@ -9,13 +9,13 @@ sudo echo "|_____|___|___|_| |_____|_____|   \___/|__|  |_|___|  |_____|___|_|  
 sudo apt update
 sudo apt install openvpn
 
-wget -P ~/ https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.7/EasyRSA-unix-v3.0.7.tgz
+wget -P ~/ https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.8/EasyRSA-3.0.8.tgz
 
 cd ~
-tar xvf EasyRSA-unix-v3.0.7.tgz
-rm EasyRSA-unix-v3.0.7.tgz
+tar xvf EasyRSA-unix-v3.0.8.tgz
+rm EasyRSA-unix-v3.0.8.tgz
 
-cd ~/EasyRSA-v3.0.7/
+cd ~/EasyRSA-v3.0.8/
 cp vars.example vars
 
 sed -i 's/#set_var EASYRSA_REQ_COUNTRY\t"US"/set_var EASYRSA_REQ_COUNTRY\t"CH"/' vars
