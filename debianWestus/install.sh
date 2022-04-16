@@ -9,6 +9,8 @@ sudo echo "|_____|___|___|_| |_____|_____|   \___/|__|  |_|___|  |_____|___|_|  
 sudo apt update
 sudo apt install openvpn
 
+su mueha0
+
 wget -P ~/ https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.8/EasyRSA-3.0.8.tgz
 
 cd ~
