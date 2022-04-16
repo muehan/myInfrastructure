@@ -1,13 +1,13 @@
-sudo apt install git
+apt install git
 
-sudo echo "" > /etc/motd
-sudo echo " _ _ _         _   _____ _____    _____ _____ _____    _____                     " >> /etc/motd
-sudo echo "| | | |___ ___| |_|  |  |   __|  |  |  |  _  |   | |  |   __|___ ___ _ _ ___ ___ " >> /etc/motd
-sudo echo "| | | | -_|_ -|  _|  |  |__   |  |  |  |   __| | | |  |__   | -_|  _| | | -_|  _|" >> /etc/motd
-sudo echo "|_____|___|___|_| |_____|_____|   \___/|__|  |_|___|  |_____|___|_|  \_/|___|_|  " >> /etc/motd
+echo "" > /etc/motd
+echo " _ _ _         _   _____ _____    _____ _____ _____    _____                     " >> /etc/motd
+echo "| | | |___ ___| |_|  |  |   __|  |  |  |  _  |   | |  |   __|___ ___ _ _ ___ ___ " >> /etc/motd
+echo "| | | | -_|_ -|  _|  |  |__   |  |  |  |   __| | | |  |__   | -_|  _| | | -_|  _|" >> /etc/motd
+echo "|_____|___|___|_| |_____|_____|   \___/|__|  |_|___|  |_____|___|_|  \_/|___|_|  " >> /etc/motd
 
-sudo apt update
-sudo apt install openvpn
+apt update
+apt install openvpn
 
 wget -P ~/ https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.8/EasyRSA-3.0.8.tgz
 
